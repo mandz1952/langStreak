@@ -1,0 +1,15 @@
+{
+  "projects":
+  [
+       {
+           "name": "nft",
+           "path": "./contracts/nft.tact",
+           "output": "./contracts/output_nft"
+       },
+      {
+           "name": "staking",
+           "path": "./contracts/staking.tact",
+           "output": "./contracts/output_staking"
+      }
+  ]
+}

@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className={`${geist.variable} ${manrope.variable} antialiased`}>
+    <html lang="ru" className={`${geist.variable} ${manrope.variable} antialiased`} suppressHydrationWarning>
       <head>
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

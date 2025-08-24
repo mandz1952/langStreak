@@ -34,8 +34,8 @@ interface EvaluationResult {
 
 export default function LanguageAssessment() {
   const [step, setStep] = useState<"setup" | "assessment" | "results">("setup")
-  const [language, setLanguage] = useState("English")
-  const [targetLanguage, setTargetLanguage] = useState("Spanish")
+  const [language, setLanguage] = useState("Русский")
+  const [targetLanguage, setTargetLanguage] = useState("Английский")
   const [assessment, setAssessment] = useState<Assessment | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
@@ -109,25 +109,25 @@ export default function LanguageAssessment() {
     return (
       <Card className="w-full max-w-md mx-auto">
         <CardHeader>
-          <CardTitle className="text-center">Language Assessment</CardTitle>
+          <CardTitle className="text-center">Тестирование</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <Label htmlFor="language">Your native language</Label>
+            <Label htmlFor="language">Твой родной язык</Label>
             <Input
               id="language"
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              placeholder="e.g., English"
+              placeholder="Русский"
             />
           </div>
           <div>
-            <Label htmlFor="target">Language to assess</Label>
+            <Label htmlFor="target">Язык для оценки</Label>
             <Input
               id="target"
               value={targetLanguage}
               onChange={(e) => setTargetLanguage(e.target.value)}
-              placeholder="e.g., Spanish"
+              placeholder="Английский"
             />
           </div>
           <Button onClick={startAssessment} disabled={loading} className="w-full">
@@ -137,7 +137,7 @@ export default function LanguageAssessment() {
                 Generating Assessment...
               </>
             ) : (
-              "Start Assessment"
+              "Начать тестирование"
             )}
           </Button>
         </CardContent>

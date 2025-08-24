@@ -18,11 +18,18 @@ export default function TONWalletConnect() {
   const [isConnecting, setIsConnecting] = useState(false)
   const [copied, setCopied] = useState(false)
   const { toast } = useToast()
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     // Check if wallet is already connected
-    checkWalletConnection()
-  }, [])
+    if (isClient) {
+      checkWalletConnection()
+    }
+  }, [isClient])
 
   const checkWalletConnection = async () => {
     // In a real implementation, this would check TON Connect state
@@ -87,6 +94,26 @@ export default function TONWalletConnect() {
 
   const formatAddress = (address: string) => {
     return `${address.slice(0, 6)}...${address.slice(-6)}`
+  }
+
+  if (!isClient) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Wallet className="h-5 w-5 text-blue-500" />
+            Connect TON Wallet
+          </CardTitle>
+          <CardDescription>Connect your TON wallet to enable staking and earn rewards</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button disabled={true} className="w-full">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            Loading...
+          </Button>
+        </CardContent>
+      </Card>
+    )
   }
 
   if (wallet?.isConnected) {
